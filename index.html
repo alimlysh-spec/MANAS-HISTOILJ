@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эпос Манас</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      background-color: #1a1a1a;
+    }
+
+    /* Слайды как фон */
+    .bg-slide {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+      z-index: -1; /* фон за текстом */
+    }
+    .bg-slide.active {
+      opacity: 1;
+    }
+
+    /* Навигация */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 10;
+    }
+    nav a {
+      background: #4CAF50;
+      padding: 10px 18px;
+      color: #fff;
+      font-size: 1em;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: #45a049;
+    }
+
+    /* Контент */
+    section {
+      position: relative;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.6);
+      max-width: 1000px;
+      margin: 100px auto 50px;
+      border-radius: 15px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.8em;
+      text-align: justify;
+      margin-bottom: 15px;
+    }
+
+    /* Стили для отдельных страниц */
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .character-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      transition: transform 0.3s;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .character-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .character-card h3 {
+      margin-top: 0;
+      color: #4CAF50;
+    }
+
+    .character-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+
+    .back-button:hover {
+      background: #45a049;
+    }
+
+    .character-details {
+      display: none;
+    }
+
+    .character-details.active {
+      display: block;
+    }
+
+    .character-image {
+      float: left;
+      width: 300px;
+      margin-right: 20px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .character-image {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      
+      nav {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Две картинки фона -->
+  <div class="bg-slide active" style="background-image: url('645db021-2d42-4be0-9a4b-6a24a2e186d9.jpeg');"></div>
+  <div class="bg-slide" style="background-image: url('ec8caed5-7179-4bfd-883a-3df7f685e5ee.jpg');"></div>
+
+  <!-- Навигация -->
+  <nav>
+    <a href="#main">Главная</a>
+    <a href="#manas">Манас</a>
+    <a href="#ak-kylu">Ак-Кылу</a>
+    <a href="#kanykey">Каныкей</a>
+    <a href="#semetey">Семетей</a>
+    <a href="#jakyp">Жакып</a>
+  </nav>
+
+  <!-- Главная страница -->
+  <section id="main" class="character-details active">
+    <h1>Эпос "Манас" - Великое наследие кыргызского народа</h1>
+    <p>
+      Эпос «Манас» — это величайшее произведение кыргызского народа и один из самых масштабных эпосов мира.
+      Его объём превышает полмиллиона стихотворных строк, что делает его в двадцать раз больше «Одиссеи» и «Илиады» вместе взятых.
+    </p>
+    
+    <div class="character-grid">
+      <div class="character-card" onclick="showCharacter('manas')">
+        <img src="III.jpeg">
+        <h3>Манас</h3>
+        <p>Главный герой эпоса, великий богатырь и объединитель кыргызских племён.</p>
+      </div>
+      
+      <div class="character-card" onclick="showCharacter('ak-kylu')">
+        <img src="gugygy.jpg">
+        <h3>Ак-Кылу</h3>
+        <p>Верный конь Манаса, символ силы, скорости и преданности.</p>
+      </div>
+      
+      <div class="character-card" onclick="showCharacter('kanykey')">
+        <img src="e98c4bd8-4602-49ac-b202-45155c8b1a54.jpeg" alt="Каныкей">
+        <h3>Каныкей</h3>
+        <p>Мудрая жена Манаса, символ женской мудрости и верности.</p>
+      </div>
+      
+      <div class="character-card" onclick="showCharacter('semetey')">
+        <img src="PinwLT_X4gghfmgz4AsYm8JGpVx9ONOFfEfO7HBJlYGmZEckpF5lxWeNqd2RB0LQuG7RRUqyonjc7-zNo0KczKeQ.jpg" alt="Семетей">
+        <h3>Семетей</h3>
+        <p>Сын Манаса, продолжатель дела отца и защитник народа.</p>
+      </div>
+      
+      <div class="character-card" onclick="showCharacter('jakyp')">
+        <img src="OIP.jpg" alt="Жакып">
+        <h3>Жакып</h3>
+        <p>Отец Манаса, мудрый и уважаемый старейшина.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Страница Манаса -->
+  <section id="manas" class="character-details">
+    <a href="#main" class="back-button" onclick="showCharacter('main')">← Назад к главной</a>
+    <h1>Манас - Великий богатырь кыргызского народа</h1>
+    <img src="unnamed (1).jpg">
+    <p>
+      Манас — центральный герой одноимённого эпоса, великий богатырь, объединитель кыргызских племён. 
+      Согласно эпосу, Манас родился в семье Жакыпа и Чыйырды после долгих лет бездетности. 
+      С самого детства он проявлял необычайную силу и храбрость.
+    </p>
+    <p>
+      Манас возглавил борьбу кыргызов против иноземных захватчиков, объединил разрозненные племена 
+      и создал сильное государство. Его имя стало символом мужества, справедливости и патриотизма.
+    </p>
+    <p>
+      В эпосе описываются многочисленные подвиги Манаса, его походы против врагов, мудрое правление 
+      и трагическая гибель от руки предателя. Несмотря на смерть, дело Манаса продолжил его сын Семетей.
+    </p>
+    <p>
+      Образ Манаса воплощает идеалы кыргызского народа: свободолюбие, справедливость, верность 
+      родной земле и готовность пожертвовать собой ради своего народа.
+    </p>
+  </section>
+
+  <!-- Страница Ак-Кылу -->
+  <section id="ak-kylu" class="character-details">
+    <a href="#main" class="back-button" onclick="showCharacter('main')">← Назад к главной</a>
+    <h1>Ак-Кылу - Верный конь Манаса</h1>
+    <img src="istockphoto-468621643-612x612.jpg">
+    <p>
+      Ак-Кылу — легендарный конь Манаса, его верный спутник и боевой товарищ. 
+      В кыргызской культуре конь всегда занимал особое место, а Ак-Кылу стал олицетворением 
+      всех лучших качеств боевого скакуна.
+    </p>
+    <p>
+      Согласно эпосу, Ак-Кылу был необычайно сильным, быстрым и умным конём. 
+      Он понимал речь человека, предугадывал опасности и всегда приходил на помощь своему хозяину 
+      в самые трудные моменты.
+    </p>
+    <p>
+      Имя "Ак-Кылу" переводится как "Белое Пятно" или "Белая Отметиина", что указывает на 
+      его особую масть. В эпосе подчёркивается, что Ак-Кылу был не просто животным, 
+      а настоящим другом и соратником Манаса.
+    </p>
+    <p>
+      Во многих сражениях именно Ак-Кылу спасал Манаса от верной гибели, 
+      вынося его из самого пекла битвы. После смерти Манаса конь долго тосковал по хозяину 
+      и в конце концов также погиб, что символизирует их неразрывную связь.
+    </p>
+  </section>
+
+  <!-- Страница Каныкей -->
+  <section id="kanykey" class="character-details">
+    <a href="#main" class="back-button" onclick="showCharacter('main')">← Назад к главной</a>
+    <h1>Каныкей - Мудрая жена Манаса</h1>
+    <img src="unnamed.jpg" alt="Каныкей" class="character-image">
+    <p>
+      Каныкей — жена Манаса, дочь хана Ташкента Ажы-Бека. 
+      Она представляет собой идеал кыргызской женщины — мудрой, верной, сильной духом.
+    </p>
+    <p>
+      Каныкей вышла замуж за Манаса не по своей воле, но со временем полюбила его 
+      и стала его верной спутницей. Она не только заботилась о домашнем очаге, 
+      но и была советчицей Манаса в важных государственных делах.
+    </p>
+    <p>
+      После гибели Манаса именно Каныкей спасла их сына Семетея от врагов, 
+      спрятав его и воспитав вдали от родных мест. Она проявила невероятную стойкость 
+      и мудрость в это трудное время.
+    </p>
+    <p>
+      Образ Каныкей символизирует материнскую любовь, женскую мудрость и силу духа. 
+      Она является одной из ключевых фигур не только в первой части эпоса, 
+      но и в продолжении — эпосе "Семетей".
+    </p>
+  </section>
+
+  <!-- Страница Семетея -->
+  <section id="semetey" class="character-details">
+    <a href="#main" class="back-button" onclick="showCharacter('main')">← Назад к главной</a>
+    <h1>Семетей - Сын Манаса и продолжатель его дела</h1>
+    <img src="i.webp">
+    <p>
+      Семетей — сын Манаса и Каныкей, главный герой второй части эпоса "Манас". 
+      Его имя означает "опора" или "поддержка", что символизирует его роль как продолжателя дела отца.
+    </p>
+    <p>
+      После гибели Манаса Семетей был вынужден скрываться вместе с матерью, 
+      так как враги хотели уничтожить всё потомство великого богатыря. 
+      Только достигнув совершеннолетия, он вернулся на родину, чтобы восстановить справедливость.
+    </p>
+    <p>
+      Семетей собрал войско, разгромил врагов и отомстил за смерть отца. 
+      Однако его судьба также трагична — он погибает от руки предателя, 
+      но перед смертью успевает продолжить род, родив сына Сейтека.
+    </p>
+    <p>
+      Образ Семетея символизирует преемственность поколений, верность заветам предков 
+      и бесконечную борьбу за свободу и справедливость. Его история составляет 
+      содержание второй части великого эпоса.
+    </p>
+  </section>
+
+  <!-- Страница Жакыпа -->
+  <section id="jakyp" class="character-details">
+    <a href="#main" class="back-button" onclick="showCharacter('main')">← Назад к главной</a>
+    <h1>Жакып - Отец Манаса</h1>
+    <img src="photo_5375068412243475880_y.jpg" alt="Жакып" class="character-image">
+    <p>
+      Жакып — отец Манаса, представитель старшего поколения, мудрый и уважаемый старейшина. 
+      Его образ олицетворяет традиции, опыт и связь поколений.
+    </p>
+    <p>
+      Долгое время Жакып и его жена Чыйырды были бездетными, что считалось большим несчастьем. 
+      После долгих молитв и просьб к высшим силам у них родился сын, которого назвали Манасом.
+    </p>
+    <p>
+      Жакып воспитал Манаса в духе традиций кыргызского народа, передал ему свою мудрость 
+      и опыт. Несмотря на преклонный возраст, он поддерживал сына в его борьбе 
+      за объединение кыргызских племён.
+    </p>
+    <p>
+      Образ Жакыпа символизирует уважение к старшим, важность семейных ценностей 
+      и преемственность поколений. Он представляет мудрость и опыт, 
+      которые передаются от отца к сыну.
+    </p>
+  </section>
+
+  <script>
+    const bgSlides = document.querySelectorAll('.bg-slide');
+    let bgIndex = 0;
+
+    setInterval(() => {
+      bgSlides[bgIndex].classList.remove('active');
+      bgIndex = (bgIndex + 1) % bgSlides.length;
+      bgSlides[bgIndex].classList.add('active');
+    }, 6000); // каждые 6 секунд смена фона
+
+    // Функция для показа выбранного персонажа
+    function showCharacter(characterId) {
+      // Скрыть все разделы
+      document.querySelectorAll('.character-details').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Показать выбранный раздел
+      document.getElementById(characterId).classList.add('active');
+      
+      // Прокрутить к верху страницы
+      window.scrollTo(0, 0);
+    }
+
+    // Обработка навигации по якорным ссылкам
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        showCharacter(targetId);
+      });
+    });
+  </script>
+</body>
+</html>
